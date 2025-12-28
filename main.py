@@ -17,11 +17,10 @@ import httpx
 from lxml import etree as ET
 
 # Configuration
-SECRET_KEY = "your-secret-key-change-in-production"
+SECRET_KEY = "secret-key-change-in-production"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 43200  # 30 days
 
-# Определяем URL базы данных. Приоритет у переменной окружения для продакшена.
 DATABASE_URL_ENV = os.getenv("DATABASE_URL")
 if DATABASE_URL_ENV and DATABASE_URL_ENV.startswith("postgres://"):
     DATABASE_URL_ENV = DATABASE_URL_ENV.replace("postgres://", "postgresql://", 1) # SQLAlchemy 1.4+ requires 'postgresql://'
